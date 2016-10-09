@@ -5,7 +5,6 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-apt -y install pv python-pisa python-html5lib
 echo ""
 mkdir -p ~/Desktop/TM_Nuke ~/Desktop/TM_Nuke/Logos ~/Desktop/TM_Nuke/Sanitation_Logs
 
@@ -18,18 +17,14 @@ cd /tmp
 
 sudo chmod 775 TM_Nuke.sh Single_Pass.sh Triple_Pass.sh
 
-# sudo dpkg -i pv_1.2.0-1_amd64.deb
-# sudo dpkg -i python-html5lib_0.999-2_all.deb
+dpkg -i pv_1.6.0-1_amd64.deb python-html5lib_0.999-4_all.deb python-pisa_3.0.32-3_all.deb python-pypdf2_1.25.1-1_all.deb python-reportlab_3.3.0-1_all.deb
 # sudo dpkg -i python-support_1.0.15_all.deb
-# sudo dpkg -i python-pypdf_1.13-1_all.deb
-# sudo dpkg -i python-reportlab_3.0-1build1_all.deb
-# sudo dpkg -i python-pisa_3.0.32-1build1_all.deb
 
 mv TM_Nuke.sh ~/Desktop/TM_Nuke
 mv Single_Pass.sh ~/Desktop/TM_Nuke
 mv Triple_Pass.sh ~/Desktop/TM_Nuke
 mv nuke.png ~/Desktop/TM_Nuke/Logos
-sudo mv pisa_util.py /usr/lib/pymodules/python2.7/sx/pisa3/pisa_util.py
+# sudo mv pisa_util.py /usr/lib/pymodules/python2.7/sx/pisa3/pisa_util.py
 
 echo "[Desktop Entry]" >> tm-nuke.desktop
 echo "Name=TM Nuke" >> tm-nuke.desktop
