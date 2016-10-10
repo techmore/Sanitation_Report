@@ -51,31 +51,33 @@ echo "To interrupt process use Ctrl+c in the terminal, data will still be lost."
 # nice -n -19 dd if=/dev/zero | pv -s "1000m" | dd of=/dev/sda bs=4096 count=1 conv=notrunc >> Nuked-preformatted.html  2>&1
 
 #This is the real nuke
-# nice -n -19 dd if=/dev/zero | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 |zenity --progress --pulsate --auto-close
+nice -n -19 dd if=/dev/zero | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
 
-nice -n -19 dd if=/dev/zero of=/dev/sda status=progress
+# nice -n -19 dd if=/dev/zero of=/dev/sda status=progress
 # aplay /home/user/Downloads/extras/smb_mariodie.wav 
 echo ""; echo "nuke complete."
 # notify-send "Nuke Complete"
 
 cat Nuked-preformatted.html | sed s/"vendor"/"<B>Vendor<\/B>"/g | sed s/"version"/"  Version"/g | sed s/"product"/"<B>Product<\/B>"/g | sed s/"description"/"  Description"/g | sed s/"serial"/"  Serial"/g > TM_Sanitation_Report_.html
 
-echo "<br><br><br><br><br><br><br><br><br>" >> TM_Sanitation_Report_.html
-echo "<font size=\"3\"><footer><h5>" >> TM_Sanitation_Report_.html
-echo "<p>TechMore.co/src Sanitation v7.1" >> TM_Sanitation_Report_.html
-echo "<p>Covered code is provided under this license on an \"as is\" basis, without warranty of any kind, either expressed" >> TM_Sanitation_Report_.html
-echo " or implied, including, without limitation, warranties that the covered code is free of defects, merchantable," >> TM_Sanitation_Report_.html
-echo "fit for a particular purpose or non-infringing. The entire risk as to the quality and performance of the " >> TM_Sanitation_Report_.html
-echo "covered code is with you. Should any covered code prove defective in any respect, you (not the initial " >> TM_Sanitation_Report_.html
-echo "developer or any  other contributor) assume the cost of any necessary servicing, repair or correction. This " >> TM_Sanitation_Report_.html
-echo "disclaimer of warranty constitutes an essential part of this license. No use of any covered code is authorized" >> TM_Sanitation_Report_.html
-echo "here under except under this disclaimer." >> TM_Sanitation_Report_.html
-echo "<p>NISTSP800-88 Compliant http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_with-errata.pdf" >> TM_Sanitation_Report_.html
-echo "pg14. 5th paragraph, \"Advancing technology has created a situation that has altered previously held best " >> TM_Sanitation_Report_.html
-echo "practices regarding magnetic disk type storage media. Basically the change in track density and the related " >> TM_Sanitation_Report_.html
-echo "changes in the storage medium have created a situation where the acts of clearing and purging the media have " >> TM_Sanitation_Report_.html
-echo "converged. That is, for ATA disk drives manufactured after 2001 (over 15 GB) clearing by overwriting the media" >> TM_Sanitation_Report_.html
-echo "from both keyboard and laboratory attack.\"" >> TM_Sanitation_Report_.html
+cat << EOF_TM_Sanitation_Report >> TM_Sanitation_Report_.html
+  <br><br><br><br><br><br><br><br><br> 
+  <font size=\"3\"><footer><h5>
+  <p>TechMore.co/src Sanitation v7.1
+  <p>Covered code is provided under this license on an \"as is\" basis, without warranty of any kind, either expressed
+  or implied, including, without limitation, warranties that the covered code is free of defects, merchantable,
+  fit for a particular purpose or non-infringing. The entire risk as to the quality and performance of the
+  covered code is with you. Should any covered code prove defective in any respect, you (not the initial
+  developer or any  other contributor) assume the cost of any necessary servicing, repair or correction. This
+  disclaimer of warranty constitutes an essential part of this license. No use of any covered code is authorized
+  here under except under this disclaimer.
+  <p>NISTSP800-88 Compliant http://csrc.nist.gov/publications/nistpubs/800-88/NISTSP800-88_with-errata.pdf
+  pg14. 5th paragraph, \"Advancing technology has created a situation that has altered previously held best
+  practices regarding magnetic disk type storage media. Basically the change in track density and the related
+  changes in the storage medium have created a situation where the acts of clearing and purging the media have
+  converged. That is, for ATA disk drives manufactured after 2001 (over 15 GB) clearing by overwriting the media
+  from both keyboard and laboratory attack.\"
+EOF_TM_Sanitation_Report
 
 now=$(date | sed s/" "/"_"/g)
 mv TM_Sanitation_Report_.html $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html
