@@ -51,7 +51,8 @@ echo "To interrupt process use Ctrl+c in the terminal, data will still be lost."
 # nice -n -19 dd if=/dev/zero | pv -s "1000m" | dd of=/dev/sda bs=4096 count=1 conv=notrunc >> Nuked-preformatted.html  2>&1
 
 #This is the real nuke
- nice -n -19 dd if=/dev/zero | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 |zenity --progress --pulsate --auto-close
+# nice -n -19 dd if=/dev/zero | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 |zenity --progress --pulsate --auto-close
+
 nice -n -19 dd if=/dev/zero of=/dev/sda status=progress
 # aplay /home/user/Downloads/extras/smb_mariodie.wav 
 echo ""; echo "nuke complete."
