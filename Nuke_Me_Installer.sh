@@ -18,7 +18,7 @@ mkdir -p /home/user/Desktop/TM_Nuke /home/user/Desktop/TM_Nuke/Logos /home/user/
 sudo chmod 775 TM_Nuke.sh Single_Pass.sh Triple_Pass.sh
 
 dpkg -i pv_1.6.0-1_amd64.deb
-dpkg -i python-pisa_3.032-3_all.deb
+dpkg -i python-six_1.10.0-3_all.deb
 dpkg -i python-html5lib_0.999-4_all.deb
 dpkg -i python-reportlab-accel_3.3.0-1_amd64.deb
 dpkg -i python-reportlab_3.3.0-1_all.deb
