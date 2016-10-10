@@ -13,7 +13,7 @@ WARNING!!! This program will attempt to destroy any data available on the first 
 echo "$customer"
 # Set hard drive size variable, display hard drive size.
 size=$(fdisk -l | grep "Disk /dev/sda:" | cut -d ":" -f 2 | cut -d "." -f 1 | cut -d "," -f 1 | cut -d " " -f 2)
-echo "Hard Disk size : $size mb" 
+echo "Hard Disk size : $size GB" 
 
 # echo "Customer List : "
 # grep -a Customer ~/Desktop/TM_Nuke/Sanitation_Logs/*.html | cut -d ":" -f 5 | cut -d "<" -f 1 | uniq -c
@@ -78,10 +78,12 @@ echo "converged. That is, for ATA disk drives manufactured after 2001 (over 15 G
 echo "from both keyboard and laboratory attack.\"" >> TM_Sanitation_Report_.html
 
 now=$(date | sed s/" "/"_"/g)
-mv TM_Sanitation_Report_.html ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html
-xhtml2pdf ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf
+mv TM_Sanitation_Report_.html $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html
+xhtml2pdf $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf
 
-evince ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
+scp -o StrictHostKeyChecking=no $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf user@10.10.10.10/var/www/html/2.Reports
+
+evince $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
 # firefox ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html &
 
 echo "message:Nuke Me complete!" | zenity --notification --listen --timeout 1
