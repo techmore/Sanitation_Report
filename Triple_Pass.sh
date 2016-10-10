@@ -51,12 +51,14 @@ echo "To interrupt process use Ctrl+c in the terminal, data will still be lost."
 # nice -n -19 dd if=/dev/zero | pv -s "1000m" | dd of=/dev/sda bs=4096 count=1 conv=notrunc >> Nuked-preformatted.html  2>&1
 
 #This is the real nuke
-echo "1/3 Random data is being written to the drive. Total time to completion is 3 times the shown time."
- nice -n -19 dd if=/dev/urandom | pv -s $size"m" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
-echo "2/3 1 is being written to the drive. Total time to completion is 2 times the shown time."
- nice -n -19 yes "1" | pv -s $size"m" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
-echo "3/3 0 is being written to the drive. Total time to completion is accurate"
-  nice -n -19 dd if=/dev/zero | pv -s $size"m" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
+echo "Pass 1/3 : 0's are being written to the drive. Total time to completion is 3 times the shown time."
+#  nice -n -19 dd if=/dev/urandom | pv -s $size"m" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
+ nice -n -19 dd if=/dev/zero | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
+
+echo "Pass 2/3 : 1's are being written to the drive. Total time to completion is 2 times the shown time."
+ nice -n -19 yes "1" | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
+echo "Pass 3/3 : 0's is being written to the drive. Total time to completion is accurate."
+  nice -n -19 dd if=/dev/zero | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
 
 # aplay /home/user/Downloads/extras/smb_mariodie.wav 
 echo ""; echo "nuke complete."
