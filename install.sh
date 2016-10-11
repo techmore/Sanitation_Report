@@ -18,6 +18,7 @@ mkdir -p $HOME/Downloads/TM_Nuke $HOME/Downloads/TM_Nuke/Logos $HOME/Downloads/T
 sudo chmod 775 TM_Nuke.sh Single_Pass.sh Triple_Pass.sh
 
  dpkg -i pv_1.6.0-1_amd64.deb
+ dpkg -i sshpass_1.05-1_amd64.deb
 
 # dpkg -i python-six_1.10.0-3_all.deb
 # dpkg -i python-html5lib_0.999-4_all.deb
