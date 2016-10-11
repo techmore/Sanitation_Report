@@ -86,7 +86,7 @@ mv TM_Sanitation_Report_.html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitat
 scp -o StrictHostKeyChecking=no $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html user@10.10.10.10/var/www/html/2.Reports
 
 # evince $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
-firefox ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html &
+firefox ~/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html &
 
 echo "message:Nuke Me complete!" | zenity --notification --listen --timeout 1
 echo "done"
