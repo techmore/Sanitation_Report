@@ -83,7 +83,7 @@ now=$(date | sed s/" "/"_"/g)
 mv TM_Sanitation_Report_.html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html
 # xhtml2pdf $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf
 
-scp -o StrictHostKeyChecking=no $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html user@10.10.10.10:/var/www/html/2.Reports
+sshpass -p "password" scp -o StrictHostKeyChecking=no $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html user@10.10.10.10:/var/www/html/2.Reports
 
 # evince $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
 firefox ~/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html &
