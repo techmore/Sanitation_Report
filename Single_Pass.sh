@@ -28,7 +28,7 @@ echo "Hard Disk size : $size GB"
 #echo '<br><br><p><center><table><tr><td><img src="'`echo ~`/Desktop/TM_Nuke/Logos/$logo_name'" width="300" height="140"></td>
 #<td><center><p><u><h1>TM Sanitation Report</u><h3>Customer : '$customer'<p>'$(date)'</td></center></tr></h2></table></center><pre><B><br><br><br>' > Nuked-preformatted.html
 
-echo '<br><br><p><center><table><tr><td><img src="'`echo ~`/Desktop/TM_Nuke/Logos/nuke.png'" width="300" height="140"></td>
+echo '<br><br><p><center><table><tr><td><img src="'`echo ~`/Downloads/TM_Nuke/Logos/nuke.png'" width="300" height="140"></td>
 <td><center><p><u><h1>TM Sanitation Report</u><h3>Customer : '$customer'<p>'$(date)'</td></center></tr></h2></table></center><pre><B><br><br><br>' > Nuked-preformatted.html
 
 echo "<font size=\"13\">" >> Nuked-preformatted.html
@@ -80,12 +80,12 @@ cat << EOF_TM_Sanitation_Report >> TM_Sanitation_Report_.html
 EOF_TM_Sanitation_Report
 
 now=$(date | sed s/" "/"_"/g)
-mv TM_Sanitation_Report_.html $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html
-xhtml2pdf $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf
+mv TM_Sanitation_Report_.html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html
+xhtml2pdf $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf
 
-scp -o StrictHostKeyChecking=no $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf user@10.10.10.10/var/www/html/2.Reports
+scp -o StrictHostKeyChecking=no $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf user@10.10.10.10/var/www/html/2.Reports
 
-evince $HOME/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
+evince $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
 # firefox ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html &
 
 echo "message:Nuke Me complete!" | zenity --notification --listen --timeout 1
