@@ -58,9 +58,9 @@ echo "To interrupt process use Ctrl+c in the terminal, data will still be lost."
 echo ""; echo "nuke complete."
 # notify-send "Nuke Complete"
 
-cat Nuked-preformatted.html | sed s/"vendor"/"<B>Vendor<\/B>"/g | sed s/"version"/"  Version"/g | sed s/"product"/"<B>Product<\/B>"/g | sed s/"description"/"  Description"/g | sed s/"serial"/"  Serial"/g > TM_Sanitation_Report_.html
+cat Nuked-preformatted.html | sed s/"vendor"/"<B>Vendor<\/B>"/g | sed s/"version"/"  Version"/g | sed s/"product"/"<B>Product<\/B>"/g | sed s/"description"/"  Description"/g | sed s/"serial"/"  Serial"/g > Nuke_.html
 
-cat << EOF_TM_Sanitation_Report >> TM_Sanitation_Report_.html
+cat << EOF_Nuke >> Nuke_.html
   <br><br><br><br><br><br><br><br><br> 
   <font size=\"3\"><footer><h5>
   <p>TechMore.co/src Sanitation v7.1
@@ -77,16 +77,16 @@ cat << EOF_TM_Sanitation_Report >> TM_Sanitation_Report_.html
   changes in the storage medium have created a situation where the acts of clearing and purging the media have
   converged. That is, for ATA disk drives manufactured after 2001 (over 15 GB) clearing by overwriting the media
   from both keyboard and laboratory attack.\"
-EOF_TM_Sanitation_Report
+EOF_Nuke
 
 now=$(date | sed s/" "/"_"/g)
-mv TM_Sanitation_Report_.html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html
+mv Nuke_.html $HOME/Downloads/TM_Nuke/Sanitation_Logs/Nuke_"$customer"_"$now".html
 # xhtml2pdf $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf
 
-sshpass -p "password" scp -o StrictHostKeyChecking=no $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html user@10.10.10.10:/var/www/html/2.Reports
+sshpass -p "password" scp -o StrictHostKeyChecking=no $HOME/Downloads/TM_Nuke/Sanitation_Logs/Nuke_"$customer"_"$now".html user@10.10.10.10:/var/www/html/2.Reports
 
 # evince $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
-firefox ~/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html &
+firefox ~/Downloads/TM_Nuke/Sanitation_Logs/Nuke_"$customer"_"$now".html &
 
 echo "message:Nuke Me complete!" | zenity --notification --listen --timeout 1
 echo "done"
