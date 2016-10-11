@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 echo ""
-mkdir -p $HOME/Desktop/TM_Nuke $HOME/Desktop/TM_Nuke/Logos $HOME/Desktop/TM_Nuke/Sanitation_Logs
+mkdir -p $HOME/Downloads/TM_Nuke $HOME/Desktop/TM_Nuke/Logos $HOME/Desktop/TM_Nuke/Sanitation_Logs
 
 # cd /tmp
 # UPDATE HERE WHEN INSTALL FILES CHANGE
@@ -30,21 +30,22 @@ dpkg -i python-pisa_3.0.32-3_all.deb
 rm pv_1.6.0-1_amd64.deb python-six_1.10.0-3_all.deb python-html5lib_0.999-4_all.deb python-reportlab-accel_3.3.0-1_amd64.deb python-reportlab_3.3.0-1_all.deb python-pil_3.1.2-0ubuntu1_amd64.deb python-imaging_3.1.2-0ubuntu1_all.deb python-pypdf_1%3a1.13-3_all.deb python-pkg-resources_20.7.0-1_all.deb python-pisa_3.0.32-3_all.deb
 # sudo dpkg -i python-support_1.0.15_all.deb
 
-mv TM_Nuke.sh $HOME/Desktop/TM_Nuke
-mv Single_Pass.sh $HOME/Desktop/TM_Nuke
-mv Triple_Pass.sh $HOME/Desktop/TM_Nuke
-mv nuke.png $HOME/Desktop/TM_Nuke/Logos
+mv TM_Nuke.sh $HOME/Downloads/TM_Nuke
+mv Single_Pass.sh $HOME/Downloads/TM_Nuke
+mv Triple_Pass.sh $HOME/Downloads/TM_Nuke
+mv nuke.png $HOME/Downloads/TM_Nuke/Logos
 # sudo mv pisa_util.py /usr/lib/pymodules/python2.7/sx/pisa3/pisa_util.py
 
 echo "[Desktop Entry]" >> tm-nuke.desktop
 echo "Name=TM Nuke" >> tm-nuke.desktop
 echo "Comment=Primary Hard Drive Sanitizer with reporting" >> tm-nuke.desktop
-echo "Exec=sudo $HOME/Desktop/TM_Nuke/TM_Nuke.sh" >> tm-nuke.desktop
-echo "Icon=$HOME/Desktop/TM_Nuke/Logos/nuke.png" >> tm-nuke.desktop
+echo "Exec=sudo $HOME/Downloads/TM_Nuke/TM_Nuke.sh" >> tm-nuke.desktop
+echo "Icon=$HOME/Downloads/TM_Nuke/Logos/nuke.png" >> tm-nuke.desktop
 echo "Terminal=true" >> tm-nuke.desktop
 echo "Type=Application" >> tm-nuke.desktop
 echo "StartupNotify=true" >> tm-nuke.desktop
 
 mv tm-nuke.desktop /usr/share/applications/
-chown root /usr/share/applications/tm-nuke.desktop
-chgrp root /usr/share/applications/tm-nuke.desktop 
+desktop-file-install tm-nuke.desktop
+chown root:root /usr/share/applications/tm-nuke.desktop
+
