@@ -46,6 +46,6 @@ echo "Type=Application" >> tm-nuke.desktop
 echo "StartupNotify=true" >> tm-nuke.desktop
 
 mv tm-nuke.desktop /usr/share/applications/
-desktop-file-install tm-nuke.desktop
+desktop-file-install /usr/share/applications/tm-nuke.desktop
 chown root:root /usr/share/applications/tm-nuke.desktop
 
