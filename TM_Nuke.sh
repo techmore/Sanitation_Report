@@ -15,7 +15,7 @@ Please select which level nuke you would like.
    DOD Triple Pass : first /dev/urandom, then yes \"1\"| dd=of/dev/sda, then /dev/null.
 
    Hard drives are overwritten with 0 last so a fresh install and image can be as compressed as possible."; then
-    . ~/Desktop/TM_Nuke/Single_Pass.sh | zenity --text-info --width=900 --height=800 
+    . ~/Downloads/TM_Nuke/Single_Pass.sh | zenity --text-info --width=900 --height=800 
 else
-    . ~/Desktop/TM_Nuke/Triple_Pass.sh | zenity --text-info --width=900 --height=800 
+    . ~/Downloads/TM_Nuke/Triple_Pass.sh | zenity --text-info --width=900 --height=800 
 fi
