@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 echo ""
-mkdir -p $HOME/Downloads/TM_Nuke $HOME/Desktop/TM_Nuke/Logos $HOME/Desktop/TM_Nuke/Sanitation_Logs
+mkdir -p $HOME/Downloads/TM_Nuke $HOME/Downloads/TM_Nuke/Logos $HOME/Downloads/TM_Nuke/Sanitation_Logs
 
 # cd /tmp
 # UPDATE HERE WHEN INSTALL FILES CHANGE
