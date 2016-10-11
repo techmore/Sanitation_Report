@@ -50,8 +50,8 @@ echo "To interrupt process use Ctrl+c in the terminal, data will still be lost."
 # THIS IS THE TEST VERSION. CHECK COUNT! SMALL WIPE FOR REPORTING ...
 # nice -n -19 dd if=/dev/zero | pv -s "1000m" | dd of=/dev/sda bs=4096 count=1 conv=notrunc >> Nuked-preformatted.html  2>&1
 
-#This is the real nuke
-nice -n -19 dd if=/dev/zero | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
+# This is the real nuke
+# nice -n -19 dd if=/dev/zero | pv -s $size"G" | dd of=/dev/sda bs=4096 conv=notrunc >> Nuked-preformatted.html  2>&1 | zenity --progress --pulsate --auto-close
 
 # nice -n -19 dd if=/dev/zero of=/dev/sda status=progress
 # aplay /home/user/Downloads/extras/smb_mariodie.wav 
@@ -81,12 +81,12 @@ EOF_TM_Sanitation_Report
 
 now=$(date | sed s/" "/"_"/g)
 mv TM_Sanitation_Report_.html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html
-xhtml2pdf $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf
+# xhtml2pdf $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf
 
-scp -o StrictHostKeyChecking=no $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf user@10.10.10.10/var/www/html/2.Reports
+scp -o StrictHostKeyChecking=no $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html user@10.10.10.10/var/www/html/2.Reports
 
-evince $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
-# firefox ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html &
+# evince $HOME/Downloads/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".pdf &
+firefox ~/Desktop/TM_Nuke/Sanitation_Logs/TM_Sanitation_Report_"$customer"_"$now".html &
 
 echo "message:Nuke Me complete!" | zenity --notification --listen --timeout 1
 echo "done"
